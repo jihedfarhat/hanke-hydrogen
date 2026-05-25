@@ -1,6 +1,7 @@
 import {Await, useRouteLoaderData} from '@remix-run/react';
 import {Disclosure} from '@headlessui/react';
 import {Suspense} from 'react';
+
 import {Text, Heading, Section} from '~/components/Text';
 import {Link} from '~/components/Link';
 import {CountrySelector} from '~/components/CountrySelector';
@@ -37,7 +38,6 @@ export function PageLayout({children, layout}) {
     </>
   );
 }
-
 
 /**
  * @param {{menu?: EnhancedMenu}}

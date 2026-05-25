@@ -17,14 +17,14 @@ import {
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
+import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
+
 import {PageLayout} from '~/components/PageLayout';
 import {GenericError} from '~/components/GenericError';
 import {NotFound} from '~/components/NotFound';
 import favicon from '~/assets/favicon.svg';
 import {seoPayload} from '~/lib/seo.server';
 import styles from '~/styles/app.css?url';
-
-import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 /**
@@ -66,7 +66,11 @@ export const links = () => {
     },
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
     {rel: 'preconnect', href: 'https://fonts.googleapis.com'},
-    {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous'},
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossOrigin: 'anonymous',
+    },
     {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@400;500;600;700&display=swap',

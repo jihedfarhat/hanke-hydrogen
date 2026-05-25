@@ -1,7 +1,13 @@
 'use client';
 import {useState, useRef, useCallback, useEffect} from 'react';
-import {motion, AnimatePresence, useMotionValue, useSpring} from 'framer-motion';
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from 'framer-motion';
 import {NavLink} from '@remix-run/react';
+
 import {Link} from '~/components/Link';
 
 // ─── Mega Menu CSS ────────────────────────────────────────────────────────────
@@ -293,7 +299,6 @@ export function MegaMenuPanel({item, headerHeight = 70, onClose}) {
       style={{top: headerHeight}}
     >
       <div className="mm-inner" style={{height: 420}}>
-
         {/* ── LEFT: Vertical Tabs ── */}
         <div className="mm-tabs">
           <TabIndicator activeIndex={activeTab} tabRefs={tabRefs} />
@@ -316,8 +321,17 @@ export function MegaMenuPanel({item, headerHeight = 70, onClose}) {
               </span>
               <span className="mm-tab-title">{child.title}</span>
               <span className="mm-tab-arrow">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
                 </svg>
               </span>
             </button>
@@ -360,8 +374,17 @@ export function MegaMenuPanel({item, headerHeight = 70, onClose}) {
                       >
                         <span>{sub.title}</span>
                         <span className="mm-link-arrow">
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          >
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
                           </svg>
                         </span>
                       </Link>
@@ -371,24 +394,39 @@ export function MegaMenuPanel({item, headerHeight = 70, onClose}) {
               ) : (
                 /* If no sub-items, show the child as a featured link */
                 <div style={{paddingTop: 8}}>
-                  <p style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: 'clamp(28px, 4vw, 48px)',
-                    fontWeight: 300,
-                    color: 'rgba(17,16,16,0.12)',
-                    letterSpacing: '0.02em',
-                    lineHeight: 1.1,
-                    marginBottom: 24,
-                  }}>
+                  <p
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: 'clamp(28px, 4vw, 48px)',
+                      fontWeight: 300,
+                      color: 'rgba(17,16,16,0.12)',
+                      letterSpacing: '0.02em',
+                      lineHeight: 1.1,
+                      marginBottom: 24,
+                    }}
+                  >
                     {activeChild?.title}
                   </p>
                 </div>
               )}
 
-              <Link to={activeChild?.to || '#'} className="mm-view-all" onClick={onClose}>
+              <Link
+                to={activeChild?.to || '#'}
+                className="mm-view-all"
+                onClick={onClose}
+              >
                 <span>Explore {activeChild?.title}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
                 </svg>
               </Link>
             </motion.div>
@@ -416,7 +454,6 @@ export function MegaMenuPanel({item, headerHeight = 70, onClose}) {
             </motion.div>
           </AnimatePresence>
         </div>
-
       </div>
 
       {/* Bottom accent line (animated) */}
@@ -426,7 +463,8 @@ export function MegaMenuPanel({item, headerHeight = 70, onClose}) {
         transition={{duration: 0.6, ease: [0.16, 1, 0.3, 1]}}
         style={{
           height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(184,146,74,0.4), transparent)',
+          background:
+            'linear-gradient(90deg, transparent, rgba(184,146,74,0.4), transparent)',
           transformOrigin: 'left',
         }}
       />
@@ -456,18 +494,25 @@ export function SimpleDropdownPanel({item, onClose}) {
         borderRadius: 2,
         padding: '8px 0',
         minWidth: 220,
-        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.04), 0 16px 48px -8px rgba(0,0,0,0.12)',
+        boxShadow:
+          '0 4px 6px -1px rgba(0,0,0,0.04), 0 16px 48px -8px rgba(0,0,0,0.12)',
       }}
     >
       {/* Tiny caret */}
-      <div style={{
-        position: 'absolute', top: -5, left: '50%',
-        transform: 'translateX(-50%) rotate(45deg)',
-        width: 9, height: 9,
-        background: '#fff',
-        border: '1px solid rgba(17,16,16,0.08)',
-        borderRight: 'none', borderBottom: 'none',
-      }} />
+      <div
+        style={{
+          position: 'absolute',
+          top: -5,
+          left: '50%',
+          transform: 'translateX(-50%) rotate(45deg)',
+          width: 9,
+          height: 9,
+          background: '#fff',
+          border: '1px solid rgba(17,16,16,0.08)',
+          borderRight: 'none',
+          borderBottom: 'none',
+        }}
+      />
 
       {children.map((child, i) => (
         <motion.div
@@ -492,9 +537,20 @@ export function SimpleDropdownPanel({item, onClose}) {
             }}
           >
             <span>{child.title}</span>
-            <span className="mm-link-arrow" style={{opacity: 0.3, transition: 'transform 0.2s'}}>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <polyline points="9 6 15 12 9 18"/>
+            <span
+              className="mm-link-arrow"
+              style={{opacity: 0.3, transition: 'transform 0.2s'}}
+            >
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <polyline points="9 6 15 12 9 18" />
               </svg>
             </span>
           </Link>
@@ -511,8 +567,8 @@ export function SmartNavItem({item, isTransparent, headerHeight}) {
   const wrapRef = useRef(null);
 
   const hasChildren = item.items?.length > 0;
-  const isMega = item.items?.length >= 3 ||
-    item.items?.some((c) => c.items?.length > 0);
+  const isMega =
+    item.items?.length >= 3 || item.items?.some((c) => c.items?.length > 0);
 
   const enter = useCallback(() => {
     clearTimeout(timerRef.current);
@@ -537,7 +593,10 @@ export function SmartNavItem({item, isTransparent, headerHeight}) {
     mx.set((e.clientX - (r.left + r.width / 2)) * 0.22);
     my.set((e.clientY - (r.top + r.height / 2)) * 0.22);
   };
-  const onMouseLeave2 = () => { mx.set(0); my.set(0); };
+  const onMouseLeave2 = () => {
+    mx.set(0);
+    my.set(0);
+  };
 
   const textColor = isTransparent ? 'rgba(255,255,255,0.80)' : undefined;
 
@@ -567,8 +626,16 @@ export function SmartNavItem({item, isTransparent, headerHeight}) {
               transition={{duration: 0.25}}
               style={{display: 'flex', opacity: 0.45, marginLeft: 2}}
             >
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <polyline points="6 9 12 15 18 9"/>
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
               </svg>
             </motion.span>
           )}
@@ -576,20 +643,17 @@ export function SmartNavItem({item, isTransparent, headerHeight}) {
       </motion.div>
 
       <AnimatePresence>
-        {hasChildren && open && (
-          isMega ? (
+        {hasChildren &&
+          open &&
+          (isMega ? (
             <MegaMenuPanel
               item={item}
               headerHeight={headerHeight}
               onClose={() => setOpen(false)}
             />
           ) : (
-            <SimpleDropdownPanel
-              item={item}
-              onClose={() => setOpen(false)}
-            />
-          )
-        )}
+            <SimpleDropdownPanel item={item} onClose={() => setOpen(false)} />
+          ))}
       </AnimatePresence>
     </div>
   );
